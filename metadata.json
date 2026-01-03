@@ -1,0 +1,5 @@
+{
+  "name": "Virtual Study Planner",
+  "description": "An AI-powered virtual study planner that generates structured, documented study plans for any subject using Google Search for free resources.",
+  "requestFramePermissions": []
+}

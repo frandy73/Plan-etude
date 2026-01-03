@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Study Planner</title>
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "react-markdown": "https://esm.sh/react-markdown@9.0.1",
+    "remark-gfm": "https://esm.sh/remark-gfm@4.0.0"
+  }
+}
+</script>
+<style>
+    /* Print styles for PDF export */
+    @media print {
+        body {
+            background-color: #fff !important; /* White background for print */
+            margin: 0;
+            padding: 0;
+        }
+        #root > div { /* Target the main App container */
+            box-shadow: none !important;
+            border: none !important;
+            margin: 0 auto !important;
+            padding: 20px !important;
+            max-width: 100% !important;
+            width: 100% !important;
+        }
+        /* Hide non-essential elements for printing */
+        form, .export-buttons-container { /* Specific class for export buttons */
+            display: none !important;
+        }
+        h1, p.text-center.text-gray-600 { /* App title and description */
+            text-align: left !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            max-width: none !important;
+        }
+        /* Adjust font sizes for print if necessary */
+        .text-3xl { font-size: 24pt !important; }
+        .text-lg { font-size: 12pt !important; }
+        .text-base { font-size: 11pt !important; }
+
+        /* Ensure links are readable and perhaps show href */
+        a::after {
+            content: " (" attr(href) ")";
+            word-break: break-all;
+        }
+        .markdown-content a {
+          color: #000 !important; /* Black links */
+          text-decoration: underline !important;
+        }
+        ul.list-none li {
+          page-break-inside: avoid; /* Avoid breaking list items across pages */
+        }
+        .grid {
+          display: block; /* Disable grid for print, stack content */
+        }
+        .grid > div {
+          margin-bottom: 20px;
+          border: 1px solid #eee;
+          padding: 15px;
+        }
+    }
+</style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center font-sans text-gray-900">
+    <div id="root"></div>
+</body>
+</html>
